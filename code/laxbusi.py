@@ -61,7 +61,7 @@ def scrape_flights(start_date_str, end_date_str):
     while current_date <= end_date:
         print(f"正在抓取日期: {current_date.strftime('%Y-%m-%d')}")
 
-        url = "https://www.google.com/travel/flights/search?tfs=CBwQAhosEgoyMDI1LTAxLTE5KAFqDAgCEggvbS8wZnRreHIOCAMSCi9tLzAzMHFiM3RAAUgBcAGCAQsI____________AZgBAg&tfu=EgYIBRABGAA&hl=zh-TW&gl=TW"
+        url = "https://www.google.com/travel/flights/search?tfs=CBwQAhosEgoyMDI1LTAxLTE5KAFqDAgCEggvbS8wZnRreHIOCAMSCi9tLzAzMHFiM3RAAUgDcAGCAQsI____________AZgBAg&tfu=EgYIBRABGAA&hl=zh-TW&gl=TW"
         driver.get(url)
 
         # 點擊日期選擇器
@@ -126,7 +126,7 @@ def scrape_flights(start_date_str, end_date_str):
         today_date = datetime.now().strftime("%m%d")
         
         # 確保 'data/' 目錄存在
-        output_directory = 'laxeco'
+        output_directory = 'laxbusi'
         if not os.path.exists(output_directory):
             os.makedirs(output_directory)
         
