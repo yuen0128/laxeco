@@ -13,7 +13,7 @@ jobs:
       max-parallel: 2  # 一次最多執行兩個腳本
       matrix:
         script:
-          - 'code/laxeco.py'
+          - 'buslax.py'
       
           
     steps:
