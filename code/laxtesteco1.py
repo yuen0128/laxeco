@@ -27,15 +27,14 @@ import re
     #else:
      #   logging.error(f"Failed to send Discord notification: {response.status_code}, {response.text}")
 
-
 # 設置 Selenium 驅動
 options = Options()
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
 options.add_argument("--disable-software-rasterizer")
-# options.add_argument("--headless")
-service = Service("C:\\Users\\yuen\\Downloads\\chromedriver-win64 (1)\\chromedriver-win64\\chromedriver.exe")  # 指定 ChromeDriver 的路徑
+options.add_argument("--headless")
+service = Service("/usr/bin/chromedriver")
 driver = webdriver.Chrome(service=service, options=options)
 
 def retry(function, max_retries=3, delay=2):
