@@ -15,6 +15,19 @@ import time
 import csv
 import re
 
+# Discord Webhook URL
+#WEBHOOK_URL = "https://discord.com/api/webhooks/1295434884361228450/zwTbBwZK3hryiEqFiCa6HWGXzZtWHRldTizl4BUNyZcw_0IHb94kbmikoKwOeFObbGBk"
+
+# 發送 Discord 通知的函數
+#def send_discord_notification(message):
+ #   data = {"content": message}
+  #  response = requests.post(WEBHOOK_URL, data=json.dumps(data), headers={"Content-Type": "application/json"})
+   # if response.status_code == 204:
+    #    logging.info("Discord 通知發送成功")
+    #else:
+     #   logging.error(f"Failed to send Discord notification: {response.status_code}, {response.text}")
+
+
 # 設置 Selenium 驅動
 options = Options()
 options.add_argument("--no-sandbox")
