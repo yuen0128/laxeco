@@ -154,7 +154,7 @@ def scrape_flights(start_date_str, end_date_str):
             os.makedirs(output_directory)
         
         # 準備寫入 CSV 檔案
-        with open(f'{output_directory}/lax{today_date}_3.csv', 'a', newline='', encoding='utf-8-sig') as csv_file:
+        with open(f'{output_directory}/laxbusi{today_date}_3.csv', 'a', newline='', encoding='utf-8-sig') as csv_file:
             csv_writer = csv.writer(csv_file)
 
             # 寫入標題
