@@ -368,8 +368,8 @@ def scrape_flights(start_date_str, end_date_str):
 try:
     success_count = 0  # 初始化 success_count
     # 調用函式
-    start_date_input = "2025-03-01"  # 固定起始日期
-    end_date_input = "2025-03-07"    # 固定結束日期
+    start_date_input = "2025-02-21"  # 固定起始日期
+    end_date_input = "2025-03-08"    # 固定結束日期
     success_count = scrape_flights(start_date_input, end_date_input)
     # 發送成功通知
    # send_discord_notification(f"共抓取 {success_count} 個航班，日期範圍: {start_date_input} 到 {end_date_input}")
