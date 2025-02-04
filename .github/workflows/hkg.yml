@@ -2,7 +2,7 @@ name: Run Python Scripts Automatically in Pairs
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # 台灣時間13:00 (GitHub Actions 使用 UTC 時間)
+    - cron: '0 13 * * *'  # 台灣時間13:00 (GitHub Actions 使用 UTC 時間)
 
 jobs:
   run-scripts:
@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install selenium requests
+        pip install -r requirements.txt || pip install selenium requests pandas
 
     - name: Install ChromeDriver
       run: |
@@ -35,18 +35,27 @@ jobs:
         sudo apt-get install --reinstall -y chromium-chromedriver
         sudo ln -sf /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver || true
 
-    - name: Check ChromeDriver version
-      run: chromedriver --version  # 確保 ChromeDriver 正確安裝
+    - name: Check Chrome and ChromeDriver versions
+      run: |
+        google-chrome --version || chromium-browser --version
+        chromedriver --version
 
-    - name: Create data directory
-      run: mkdir -p data  # 確保 data/ 目錄存在
+    - name: Ensure data directory exists
+      run: mkdir -p data && ls -lh data/
 
     - name: Run script
       run: |
+        set -x
         python ${{ matrix.script }}
 
-    - name: Check if CSV files exist
-      run: ls -lh data/ || echo "No CSV files found in data/"
+    - name: Debug CSV File Creation
+      run: |
+        echo "Checking data directory..."
+        ls -lh data/ || echo "No files in data/"
+        echo "Current directory contents:"
+        ls -lh
+        echo "Python scripts directory contents:"
+        ls -lh code/
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
@@ -54,4 +63,5 @@ jobs:
       with:
         name: flight-data
         path: data/*.csv
-        if-no-files-found: ignore
+        if-no-files-found: warn  # 如果沒有找到 CSV，不要直接報錯
+
